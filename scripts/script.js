@@ -12,7 +12,18 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         let newPost = document.createElement('journal-entry');
         newPost.entry = entry;
+        newPost.addEventListener('click', () => {
+          setState({type: 'entry', num: newPost.num, 'entryNew': entry});
+        });
         document.querySelector('main').appendChild(newPost);
       });
     });
+});
+
+settings.addEventListener('click', () => {
+  router.setState({type: 'settings'});
+});
+
+title.addEventListener('click', () => {
+  router.setState({type: 'home'});
 });
